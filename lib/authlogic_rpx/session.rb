@@ -145,14 +145,14 @@ module AuthlogicRpx
 				
 				# If we don't have a valid sign-in, give-up at this point
 				if @rpx_data.nil? || @rpx_data['profile'].nil?
-					errors.add_to_base("Authentication failed. Please try again.")
+					errors.add("Authentication failed. Please try again.")
 					return false
 				end
 				
 				rpx_id = @rpx_data['profile']['identifier']
 				rpx_provider_name = @rpx_data['profile']['providerName']
 				if rpx_id.blank?
-					errors.add_to_base("Authentication failed. Please try again.")
+					errors.add("Authentication failed. Please try again.")
 					return false
 				end
 				
@@ -171,7 +171,7 @@ module AuthlogicRpx
 						self.attempted_record.add_rpx_identifier( rpx_id, rpx_provider_name)
 						self.attempted_record.save_without_session_maintenance
 					else
-						errors.add_to_base("We did not find any accounts with that login. Enter your details and create an account.")
+						errors.add("We did not find any accounts with that login. Enter your details and create an account.")
 						return false
 					end
 				else
