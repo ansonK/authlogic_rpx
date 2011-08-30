@@ -7,9 +7,8 @@ rescue LoadError
   require 'test/unit'
 end
 require 'ext_test_unit'
-
-require "active_record"
-require "action_controller"
+require "active_record/railtie"
+require "action_controller/railtie"
 
 ActiveRecord::Schema.verbose = false
 

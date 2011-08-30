@@ -1,3 +1,3 @@
-require File.dirname(__FILE__) + '/../../test_helper.rb'
-require File.dirname(__FILE__) + '/../basic_authentication_and_registration_test.rb'
+require 'test_helper'
+require 'basic_authentication_and_registration_test'
 

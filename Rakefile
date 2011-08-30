@@ -15,8 +15,9 @@ begin
     gem.email = "gallagher.paul@gmail.com"
     gem.homepage = "http://github.com/tardate/authlogic_rpx"
     gem.authors = [ "Paul Gallagher / tardate <gallagher.paul@gmail.com>" ]
-    gem.add_dependency "authlogic", "= 2.1.6"
-    gem.add_dependency "rpx_now", "= 0.6.23"
+    gem.add_dependency "authlogic", "= 3.0.3"  
+    gem.add_dependency "rpx_now", "= 0.6.24"
+    gem.add_development_dependency "rails", "~> 3.0.10"
     gem.add_development_dependency "test-unit", ">= 2.1.1"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
@@ -29,18 +30,24 @@ require 'rake/testtask'
 
 namespace :test do
   Rake::TestTask.new(:units) do |t|
+    t.libs << 'test'
+    t.libs << 'test/integration'
     t.libs << "test/libs"
     t.pattern = 'test/unit/*test.rb'
     t.verbose = true
   end
 
   Rake::TestTask.new(:no_mapping) do |t|
+    t.libs << 'test'
+    t.libs << 'test/integration'
     t.libs << "test/libs"
     t.test_files = FileList.new('test/unit/*test.rb', 'test/integration/no_mapping/*test.rb')
     t.verbose = true
   end
 
   Rake::TestTask.new(:internal_mapping) do |t|
+    t.libs << 'test'
+    t.libs << 'test/integration'
     t.libs << "test/libs"
     t.test_files = FileList.new('test/integration/internal_mapping/*test.rb')
     t.verbose = true

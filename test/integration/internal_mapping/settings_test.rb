@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../test_internal_mapping_helper.rb'
+require 'test_internal_mapping_helper'
 
 class SettingsTest < ActiveSupport::TestCase
 

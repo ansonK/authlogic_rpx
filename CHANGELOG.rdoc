@@ -1,4 +1,4 @@
-== 1.2.0 released 2010-09-29
+== require 'test_helper' released 2010-09-29
 
 * added rails 3 compatibility (GH#24)
 * updated gem support to authlogic 2.1.6 and rpx_now 0.6.23
