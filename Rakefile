@@ -1,7 +1,10 @@
 ENV['RDOCOPT'] = "-S -f html -T hanna"
 
-require "rubygems"
+require 'rubygems'
 require 'rake'
+require 'bundler'
+
+Bundler.setup
 
 require File.dirname(__FILE__) << "/lib/authlogic_rpx/version"
 
@@ -15,11 +18,11 @@ begin
     gem.email = "gallagher.paul@gmail.com"
     gem.homepage = "http://github.com/tardate/authlogic_rpx"
     gem.authors = [ "Paul Gallagher / tardate <gallagher.paul@gmail.com>" ]
-    gem.add_dependency "authlogic", "= 3.0.3"  
-    gem.add_dependency "rpx_now", "= 0.6.24"
-    gem.add_development_dependency "rails", "~> 3.0.10"
-    gem.add_development_dependency "test-unit", ">= 2.1.1"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency 'activesupport', '>= 3.0.7'
+    gem.add_dependency 'authlogic', '>= 3.1.0'
+    gem.add_dependency 'rpx_now', '>= 0.6.24'
+    gem.add_development_dependency 'rails', '>= 3.0.7'
+    gem.add_development_dependency 'test-unit', '>= 2.2.2'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

@@ -1,6 +1,7 @@
 module AuthlogicRpx
 	# This module is responsible for adding all of the RPX goodness to the Authlogic::Session::Base class.
 	module Session
+	  require 'active_support/core_ext/class/inheritable_attributes'
 		# Add a simple rpx_identifier attribute and some validations for the field.
 		def self.included(klass)
 			klass.class_eval do

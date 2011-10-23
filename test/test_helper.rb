@@ -1,13 +1,10 @@
-begin
-  require 'rubygems'
-  gem 'test-unit'
-  require 'test/unit'
-rescue LoadError
-  # assume using stdlib Test:Unit
-  require 'test/unit'
-end
-require 'ext_test_unit'
+require "test/unit"
+require "rubygems"
+require "ruby-debug"
+require "active_record"
+require "active_record/fixtures"
 require "active_record/railtie"
+require "active_support/railtie"
 require "action_controller/railtie"
 
 ActiveRecord::Schema.verbose = false
@@ -54,7 +51,6 @@ ActiveRecord::Schema.define(:version => 1) do
 
 end
 
-require "active_record/fixtures"
 require "authlogic"
 require "authlogic/test_case"
 
