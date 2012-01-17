@@ -146,7 +146,7 @@ module AuthlogicRpx
 				
 				# If we don't have a valid sign-in, give-up at this point
 				if @rpx_data.nil? || @rpx_data['profile'].nil?
-					errors.add("Authentication failed. Please try again.")      if Rails::VERSION::STRING >= '3.0.0'
+					errors.add(:base,"Authentication failed. Please try again.")      if Rails::VERSION::STRING >= '3.0.0'
 					errors.add_base("Authentication failed. Please try again.") if Rails::VERSION::STRING < '3.0.0'
 					return false
 				end
@@ -154,7 +154,7 @@ module AuthlogicRpx
 				rpx_id = @rpx_data['profile']['identifier']
 				rpx_provider_name = @rpx_data['profile']['providerName']
 				if rpx_id.blank?
-					errors.add("Authentication failed. Please try again.")      if Rails::VERSION::STRING >= '3.0.0'
+					errors.add(:base,"Authentication failed. Please try again.")      if Rails::VERSION::STRING >= '3.0.0'
 					errors.add_base("Authentication failed. Please try again.") if Rails::VERSION::STRING < '3.0.0'
 					return false
 				end
@@ -174,7 +174,7 @@ module AuthlogicRpx
 						self.attempted_record.add_rpx_identifier( rpx_id, rpx_provider_name)
 						self.attempted_record.save_without_session_maintenance
 					else
-						errors.add("We did not find any accounts with that login. Enter your details and create an account.")      if Rails::VERSION::STRING >= '3.0.0'
+						errors.add(:base,"We did not find any accounts with that login. Enter your details and create an account.")      if Rails::VERSION::STRING >= '3.0.0'
   					errors.add_base("We did not find any accounts with that login. Enter your details and create an account.") if Rails::VERSION::STRING < '3.0.0'
 						return false
 					end
