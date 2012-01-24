@@ -1,3 +1,7 @@
+== 1.3.0 released 2012-01-24
+
+* added rails 3.2 compatibility (active_support removed inheritable_attributes used in Session module)
+
 == require 'test_helper' released 2010-09-29
 
 * added rails 3 compatibility (GH#24)
