@@ -1,3 +1,4 @@
+source :gemcutter
 gemspec
 
 group :development, :test do
