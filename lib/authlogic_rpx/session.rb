@@ -161,7 +161,7 @@ module AuthlogicRpx
 				end
 				
 				self.attempted_record = klass.send(find_by_rpx_identifier_method, rpx_id)
-				
+
 				# so what do we do if we can't find an existing user matching the RPX authentication...
 				if !attempted_record
 					if auto_register?
@@ -171,9 +171,15 @@ module AuthlogicRpx
 						# save the new user record - without session maintenance else we
 						# get caught in a self-referential hell, since both session and
 						# user objects invoke each other upon save
-						self.new_registration = true
-						self.attempted_record.add_rpx_identifier( rpx_id, rpx_provider_name)
-						self.attempted_record.save_without_session_maintenance
+            #
+            # Also only continue if the map_rpx_data did not create any errors
+            if errors.empty?
+						  self.new_registration = true
+						  self.attempted_record.add_rpx_identifier( rpx_id, rpx_provider_name)
+						  self.attempted_record.save_without_session_maintenance
+            else
+              return false
+            end
 					else
 						errors.add(:base,"We did not find any accounts with that login. Enter your details and create an account.")      if Rails::VERSION::STRING >= '3.0.0'
   					errors.add_base("We did not find any accounts with that login. Enter your details and create an account.") if Rails::VERSION::STRING < '3.0.0'
