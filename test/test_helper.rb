@@ -7,6 +7,7 @@ require "active_record/railtie"
 require "active_support/railtie"
 require "action_controller/railtie"
 
+ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Schema.verbose = false
 
 begin
